@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Team Task Manager</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar glass">
+    <div class="nav-left">
+      <div class="logo-icon-small">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M9 11l3 3L22 4"/>
+          <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+        </svg>
+      </div>
+      <h2>Task Manager</h2>
+    </div>
+    <div class="nav-right">
+      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+        <span id="theme-icon">🌙</span>
+      </button>
+      <div class="user-badge">
+        <div class="avatar" id="user-avatar"></div>
+        <div class="user-meta">
+          <span id="user-name"></span>
+          <span class="user-role" id="user-role"></span>
+        </div>
+      </div>
+      <button class="btn-logout ripple" onclick="logout()">
+        <span>Logout</span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <section class="hero">
+      <h1 class="welcome-text">Welcome back, <span id="welcome-name" class="gradient-text"></span> 👋</h1>
+      <p class="subtitle">Here's what's happening with your projects today.</p>
+    </section>
+
+    <section class="stats" id="stats"></section>
+
+    <section class="section-block">
+      <div class="section-header">
+        <div>
+          <h2>📁 Your Projects</h2>
+          <p class="section-subtitle">Click any project to manage tasks</p>
+        </div>
+        <button class="btn-primary ripple" onclick="showCreateProject()">
+          <span>✨ New Project</span>
+        </button>
+      </div>
+      <div id="projects-list" class="grid"></div>
+    </section>
+
+    <section id="tasks-section" class="section-block hidden">
+      <div class="section-header">
+        <div>
+          <h2 id="project-title"></h2>
+          <p class="section-subtitle" id="project-desc"></p>
+        </div>
+        <div class="action-buttons">
+          <button id="add-member-btn" class="btn-secondary ripple" onclick="showAddMember()">
+            <span>👥 Add Member</span>
+          </button>
+          <button class="btn-primary ripple" onclick="showCreateTask()">
+            <span>➕ New Task</span>
+          </button>
+        </div>
+      </div>
+      <div id="members-list" class="members"></div>
+      <div class="kanban">
+        <div class="column" data-status="todo">
+          <div class="column-header">
+            <h3>📝 To Do</h3>
+            <span class="count" id="count-todo">0</span>
+          </div>
+          <div class="tasks" data-status="todo"></div>
+        </div>
+        <div class="column" data-status="in_progress">
+          <div class="column-header">
+            <h3>⚙️ In Progress</h3>
+            <span class="count" id="count-in_progress">0</span>
+          </div>
+          <div class="tasks" data-status="in_progress"></div>
+        </div>
+        <div class="column" data-status="done">
+          <div class="column-header">
+            <h3>✅ Done</h3>
+            <span class="count" id="count-done">0</span>
+          </div>
+          <div class="tasks" data-status="done"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-overlay" onclick="closeModal()"></div>
+    <div class="modal-content glass">
+      <button class="close-btn" onclick="closeModal()">&times;</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+  <canvas id="confetti-canvas"></canvas>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

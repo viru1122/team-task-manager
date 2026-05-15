@@ -21,8 +21,8 @@ A full-stack web app for managing projects, teams, and tasks with role-based acc
 - 🎨 Kanban Board View
 
 ## 🧪 Test Credentials
-- **Admin:** nishan@gmail.com / nishan
-- **Member:** nishan1@gmail.com / nishan1
+- **Admin:** vishal@gmail.com / vishal123
+- **Member:** vishal71@gmail.com / vishal567
 
 ## ⚙️ Local Setup
 
